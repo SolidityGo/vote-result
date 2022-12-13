@@ -1,0 +1,4 @@
+{
+  "baseURL":"https://api.binance.org/v1/",
+  "listValidatorURL": "staking/chains/bsc/validators?limit=100&offset=0"
+}

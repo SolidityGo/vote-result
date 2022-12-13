@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "strict": false,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "typeRoots": ["./typechain", "./node_modules/@types"],
+    "types": ["@nomiclabs/hardhat-ethers", "@nomiclabs/hardhat-waffle", "node", "./node_modules/@types", "./node_modules/@types/node", "@types/node"]
+  },
+  "include": ["./"],
+  "files": ["./index.ts", "./indexV2.ts"]
+}
