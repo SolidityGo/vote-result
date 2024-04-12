@@ -3,6 +3,8 @@ const bech32 = require('bech32-buffer')
 const config = require('./config.json')
 const {execSync} = require('child_process')
 
+let proposalId: string;
+
 interface ListValidatorsResp {
     total: number
     validators?: [
@@ -22,6 +24,9 @@ interface ListValidatorsResp {
 }
 
 const init = () => {
+    const args = process.argv.slice(2)
+    proposalId = args[0]
+    console.log('vote result of proposalId', proposalId)
 }
 
 // get list of all the current validator
@@ -49,8 +54,7 @@ const getValidatorList = async () => {
 
     let voteResult: any = {}
     await new Promise(async (resolve, reject) => {
-
-        const result = execSync('./bnbcli gov  query-votes  --proposal-id 14 --side-chain-id  bsc   --trust-node  --node http://dataseed2.defibit.io:80 --chain-id Binance-Chain-Tigris')
+        const result = execSync(`./bnbcli gov  query-votes  --proposal-id ${proposalId} --side-chain-id  bsc   --trust-node  --node http://dataseed2.defibit.io:80 --chain-id Binance-Chain-Tigris`)
         let resultObj = JSON.parse(result.toString())
 
         for (const iterator of validators.validators) {
